@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Happyness</title>
+<script src="https://www.google.com/jsapi?key=ABQIAAAA-r9lfdr1lC8byOxgQSRAQxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTK4kuq_2mcWT0ed0X4Jzx1Viwexw" type="text/javascript"></script>
+<script type="text/javascript">
+	google.load("jquery", "1.6.2");
+</script>
+<script>
+	var score = 0;
+	
+	var scores = [9,14,19,20,25,30,35];
+	var texts = ["You are extremely unsatisfied.", "You are unsatisfied.", "You are slightly unsatisfied.", "You are neutral.", "You are reasonably satisfied.", "You are very satisfied.", "You are extremely satisfied with your life."];
+	
+	$(document).ready(function () {
+		$("h3").text("Ready to measure your happyness!");
+		
+		$("button").click(function () {
+			$(".score").each(function (i) {
+				score = score + parseInt(this.value);
+				
+			});
+
+			for (var i=0;i<scores.length;i++)
+			{
+				if (scores[i]>=score)
+				{
+					break;
+				}
+			}
+		
+			$("h3").text("You've just measured your happyness!");
+			$("form").after('<form id="result" style="display:none;"><h1>Your score: '+score+'</h1><h2>'+texts[i]+'</h2></form>').fadeOut("slow");
+			
+			$("#result").fadeIn("slow");
+			$("#smile").css("background-position","-"+(150*i)+"px 0px").fadeIn("slow");
+			//alert(score);
+		});
+	});
+</script>
+</head>
+<body>
+<header>
+    <h1>Happyness</h1>
+    <h3></h3>
+</header>
+<form>
+<table>
+<tr><td>In most ways my life is ideal. </td><td><input class="score" type="range"  min="1" max="7" value="0" /> </td><td id="v"><td></tr>
+<tr><td>The conditions of my life are excellent. </td><td><input class="score" type="range"  min="1" max="7" value="0" /></td><td id="v"><td></tr>
+<tr><td>I am satisfied with my life. </td><td><input class="score" type="range"  min="1" max="7" value="0"/></td><td id="v"><td></tr>
+<tr><td>So far I have gotten the important things I want in life. </td><td><input class="score" type="range"  min="1" max="7" value="0"/></td><td id="v"><td></tr>
+<tr><td>If I could live my life over, I would change almost nothing. </td><td><input class="score" type="range"  min="1" max="7" value="0" /></td><td id="v"><td></tr>
+<tr><td></td><td><button id="measure" type="button">Show my happyness!</button></td></tr>
+</table>
+</form>
+<div id="smile" style="display:none;width:150;height:150;background-image:url('./happyness.png');"></div>
+<footer>
+    <p>Happyness version 0.0.1; features: bugs, todo:
+    <ul>
+        <li>use HTML5</li>
+        <li>UI, UX, eyecandy</li>
+        <li>jQuery Mobile</li>
+    </ul>
+    </p>
+    <p>This <a href="http://s.psych.uiuc.edu/~ediener/SWLS.html">test</a> is designed by psychologist <a href="http://en.wikipedia.org/wiki/Ed_Diener">Professor Ed Diener</a> from the <a href="http://s.psych.uiuc.edu/~ediener/bio.html">University of Illinois</a>
+    </p>
+    <p>The scale is in the public domain (not copyrighted) and therefore you are free to use it without permission or charge by all professionals (researchers and practitioners) as long as you give credit to the authors of the scale: Ed Diener, Robert A. Emmons, Randy J. Larsen and Sharon Griffin as noted in the 1985 article in the Journal of Personality Assessment.
+    </p>
+</footer>
+</body>
+</html>
