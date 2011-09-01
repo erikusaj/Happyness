@@ -2,10 +2,7 @@
 <html>
 <head>
 <title>Happyness</title>
-<script src="https://www.google.com/jsapi?key=ABQIAAAA-r9lfdr1lC8byOxgQSRAQxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTK4kuq_2mcWT0ed0X4Jzx1Viwexw" type="text/javascript"></script>
-<script type="text/javascript">
-	google.load("jquery", "1.6.2");
-</script>
+<script src="./js/jquery-1.6.2.min.js" type="text/javascript"></script>
 <script>
 	var score = 0;
 	
@@ -30,11 +27,10 @@
 			}
 		
 			$("h3").text("You've just measured your happyness!");
-			$("form").after('<form id="result" style="display:none;"><h1>Your score: '+score+'</h1><h2>'+texts[i]+'</h2></form>').fadeOut("slow");
+			$("form").after('<form id="result" style="display:none;"><h1>Your score: '+score+'</h1><h2>'+texts[i]+'</h2></form>').fadeOut("fast");
 			
 			$("#result").fadeIn("slow");
 			$("#smile").css("background-position","-"+(150*i)+"px 0px").fadeIn("slow");
-			//alert(score);
 		});
 	});
 </script>
@@ -54,7 +50,8 @@
 <tr><td></td><td><button id="measure" type="button">Show my happyness!</button></td></tr>
 </table>
 </form>
-<div id="smile" style="display:none;width:150;height:150;background-image:url('./happyness.png');"></div>
+<div id="smile" style="display:none;width:150px;height:150px;background-image:url('img/happyness.png');">&nbsp;</div>
+
 <footer>
     <p>Happyness version 0.0.1; features: bugs, todo:
     <ul>
